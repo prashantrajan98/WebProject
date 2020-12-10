@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block meta %}
+{% for record in seo %}
+{% if record.seo_title %}<title>{{ record.seo_title }}</title>{% endif %}
+{% if record.seo_desc %}<meta name= "description" content="{{ record.seo_desc }}">{% endif %}
+{% if record.sec_keywords %}<meta name= "keywords" content="{{ record.seo_keywords }}">{% endif %}
+{% endfor %}
+{% endblock %}
+{% block content %}
+<section class="banner-section">
+   <div class="container">
+      <h1>The most trusted specialty medical logistics company in the world</h1>
+      <form action="{% url 'status' %}" method="get">
+         <div class="row">
+            <div class="col-3"></div>
+            <div class="col-lg-3 col-md-2 col-sm-2 col-12">
+               <label>HOUSE WAYBILL:</label>
+               <input type="text" name="bill" class="form-control">
+            </div>
+            <div class="col-lg-3 col-md-2 col-sm-2 col-12">
+               <button type="submit" class="form-control">Track Shipment ></button>
+            </div>
+            <div class="col-3"></div>
+         </div>
+      </form>
+   </div>
+</section>
+
+<section class="first-section">
+   <div class="container">
+      <h1>Transporting Innovation</h1>
+      <p>At DG International Courier, we move innovation forward. Whether designing and executing world-class logistics for any industry, or providing emergency logistical support for other key industries, we’ve built our reputation on half a century of proven medical courier reliability and flawless execution.</p>
+   </div>
+</section>
+
+
+
+<section class="third-section" id="service-sec">
+   <div class="container">
+      <h1>Our Services</h1>
+      <div class="row">
+         {% for record in service %}
+         <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+            <a class="d-block" style="text-decoration: none" href="{{ record.get_absolute_url }}">
+               <div class="card">
+                  <img src="{{ record.image.url }}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                     <h5 class="card-title">{{ record.title }}</h5>
+                  </div>
+               </div>
+            </a>
+         </div>
+         {% endfor %}
+
+      </div>
+   </div>
+</section>
+<section class="forth-section">
+   <div class="container">
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+         <div class="carousel-inner">
+            <div class="carousel-item active">
+               <h2>Very good Service as I sent Diwali Parcel (Home made food) for my grand children this diwali it just took 2 days to deliver to USA. My grand children get home made food in very good condition and fresh.</h2>
+               <p>Madhumalti Shinde</p>
+            </div>
+            <div class="carousel-item">
+               <h2>Good services #economical rates #experienced team and specially thanks to Mr Gaurav who guided us in packing and provided pickup facility</h2>
+               <p>Gaurav G</p>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<section class="fifth-section">
+   <div class="container">
+      <h1>Our Blogs</h1>
+      <div class="row">
+         {% for record in blog_posts %}
+         <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt-2">
+            <a class="d-block" style="text-decoration: none" href="{{ record.get_absolute_url }}">
+               <div class="card">
+                  <img src="{{ record.thumbnail.url }}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                     <h5 class="card-title">{{ record.title }}</h5>
+                  </div>
+               </div>
+            </a>
+         </div>
+         {% endfor %}
+
+      </div>
+   </div>
+</section>   
+
+{% endblock %}
+
+
+
+

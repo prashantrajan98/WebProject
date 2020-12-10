@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block meta %}
+{% if our_services.seo_title %}
+<title>{{ our_services.seo_title }}</title>
+{% endif %}
+{% if our_services.seo_desc %}
+<meta name="description" content="{{ our_services.seo_desc }}">
+{% endif %}
+{% if our_services.seo_keywords %}
+<meta name="kaywords" content="{{ our_services.seo_keywords }}">
+{% endif %}
+{% endblock %}
+{% block content %}
+<section class="service-section">
+	<div class="container-fluid">
+		<h3>{{ our_services.title }}</h3>	
+	</div>
+</section>
+<section class="service-content">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 col-12">
+				<img src="{{ our_services.image.url }}">
+			</div>
+			<div class="col-lg-6 col-md-6 col-sm-6 col-12">
+				<h3>{{ our_services.title }}</h3>
+				<p>{{ our_services.content | safe }}</p>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}
+
+
+

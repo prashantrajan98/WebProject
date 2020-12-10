@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>{{ bill }} | DispatchEx</title>
+{% endblock %}
+{% block content %}
+<section class="status-section">
+   <div class="container">
+      <div class="msg-sec">
+         <p>Your shipment detail.</p>
+      </div>
+      <div class="table-first table-responsive-sm">
+         <table class="table table-bordered">
+            <thead>
+               <tr>
+                  <th scope="col">AirWay Bill No.</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Forwarding No.</th>
+                  <th scope="col">Destination</th>
+                  <th scope="col">Consignee</th>
+                  <th scope="col">Status</th>
+               </tr>
+            </thead>
+            <tbody>
+               {% for track in tracks %}
+               <tr>
+                  <th scope="row">{{ track.bill }}</th>
+                  <td>{{ track.pickup|date }}</td>
+                  <td>{{ track.forwarding }}</td>
+                  <td>{{ track.destination|title }}</td>
+                  <td>{{ track.consignee|title }}</td>
+                  <td>{{ track.status|title }}</td>
+               </tr>
+               {% endfor %}
+            </tbody>
+         </table>
+      </div>
+      <div class="table-second table-responsive-sm">
+         <table class="table table-bordered">
+            <thead>
+               <tr>
+                  <th scope="col">Date/Time</th>
+                  <th scope="col">Activity</th>
+                  <th scope="col">Locations</th>
+               </tr>
+            </thead>
+            <tbody>
+               {% for track in trcak_status %}
+               <tr>
+                  <th scope="row">{{ track.status_datetime }}</th>
+                  <td>{{ track.track_status | title }}</td>
+                  <td>{{ track.locations | title }}</td>
+               </tr>
+               {% endfor %}
+               
+            </tbody>
+         </table>
+      </div>
+   </div>
+</section>    
+{% endblock %}
+
+
+
+

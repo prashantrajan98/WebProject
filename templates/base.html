@@ -1,0 +1,142 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+ {% block meta %}{% endblock %}
+ <!-- Required meta tags -->
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon.png'%}">
+ <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png'%}">
+ <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16x16.png'%}">
+ <link rel="manifest" href="{% static 'images/site.webmanifest'%}">
+
+ <!-- Bootstrap CSS -->
+ <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+ <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> -->
+ <!-- <link href="https://fonts.googleapis.com/css2?family=Trispace&display=swap" rel="stylesheet"> -->
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+ <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}">
+ <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css'%}">
+
+</head>
+<body>
+ <section class="top-nav-section">
+  <div class="container">
+   <p>Get it delivered with the top delivery company in Delhi-NCR - Phone No: <a href="tel: +918700805324">+91 87008 05324</a></p>  
+ </div> 
+</section>
+<section class="nav-section">
+  <div class="container">
+   <nav class="navbar navbar-expand-lg navbar-light" >
+    <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/unnamed.png'%}" ></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+   </button>
+
+   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+     <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+       <a class="nav-link" href="{% url 'index' %}">HOME</a>
+     </li>
+     <li class="nav-item">
+       <a class="nav-link" href="{% url 'about' %}">ABOUT US</a>
+     </li>
+     <li class="nav-item dropdown">
+       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        OUR SERVICES
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        {% for record in service %}
+        <a class="dropdown-item" href="{{ record.get_absolute_url }}">{{ record.title }}</a>
+        {% endfor %}
+        <!-- <a class="dropdown-item" href="#">Import Express</a>
+        <a class="dropdown-item" href="#">International Courier Service</a>
+        <a class="dropdown-item" href="#">Domestic Courier Services</a>
+        <a class="dropdown-item" href="#">Cargo Services</a>
+        <a class="dropdown-item" href="#">Export Courier & Cargo Devices</a> -->
+      </div>
+    </li>
+    <li class="nav-item">
+     <a class="nav-link" href="{% url 'blog' %}">BLOG</a>
+   </li>
+   <li class="nav-item">
+     <a class="nav-link" href="{% url 'contact' %}">CONTACT US</a>
+   </li>
+
+ </ul>
+</div>
+</nav>
+</div>
+</section>
+{% block content %}{% endblock %}
+<section class="footer-section">
+ <div class="container">
+  <div class="row">
+   <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+    <h4>DG international courier</h4>
+    <div class="footer-content">
+     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+
+   </div>
+ </div>
+ <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+  <h4>Our Services</h4>
+  <div class="footer-content">
+   <ul>
+    <li><a href="#">University Documents Express Delivery</a></li>
+    <li><a href="#">Import Express</a></li>
+    <li><a href="#">International Courier Service</a></li>
+    <li><a href="#">Domestic Courier Services</a></li>
+    <li><a href="#">Cargo Services</a></li>
+    <li><a href="#">Export Courier & Cargo Devices</a></li>
+  </ul> 
+</div>
+</div>
+<div class="col-lg-3 col-md-6 col-sm-6 col-12">
+  <h4>Reach Us</h4>
+  <div class="footer-content">
+   <p>Address:</p>
+   <p>800-2, Gandhi Gali, Tilak Bazar, Katra Ghel, Khari Baoli, Chandni Chowk, Delhi, 110006</p>
+   <a href="#">+91 99999 27721</a>
+   <a href="#">info@dginternationalexpress.com</a>
+   <a href="https://g.page/dginternationalcourier?share">Find Us On A Map</a>
+
+ </div>
+</div>
+<div class="col-lg-3 col-md-6 col-sm-6 col-12">
+  <h4>Get In Touch</h4>
+  <p>Join Us To Receive Latest Updates, News And Offers</p>
+  <form action="{% url 'subscribe' %}" method="POST">
+    {% csrf_token %}
+    {{ sf.email.label_tag }}
+    {{ sf.email }}
+    <!-- <input type="mail" name="" placeholder="Enter Your Mail" class="form-control"> -->
+    <button type="submit" class="form-control">GO !</button>
+  </form>
+</div>
+</div>
+</div>
+</section>
+<section class="footer-last">
+ <div class="container">
+  <p>Design and Developed by Viral Groww</p>
+</div>
+</section>
+
+
+
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+<!-- Option 2: jQuery, Popper.js, and Bootstrap JS
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+-->
+</body>
+</html>

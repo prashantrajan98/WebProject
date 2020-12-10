@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block meta %}
+{% if blog.seo_title %}<title>{{ blog.seo_title }}</title>{% endif %}
+{% if blog.seo_desc %}<meta name= "description" content="{{ blog.seo_desc }}">{% endif %}
+{% if blog.seo_keywords %}<meta name= "keywords" content="{{ blog.seo_keywords }}">{% endif %}
+{% endblock %}
+{% block content %}
+<section class="Blog-Details-sec">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-md-6 col-sm-6 col-12">
+				<div class="details-left">
+					<img src="{{ blog.thumbnail.url }}">
+					<h4>{{ blog.title }}</h4>	
+					<p>{{ blog.content|safe }}</p>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 col-sm-6 col-12">
+				<div class="details-right">
+					<h4>latest Posts</h4>
+					{% for record in latest_posts %}
+					<a href="/blog/{{ record.slug }}">
+						<div class="card">
+							<img src="{{ record.thumbnail.url }}" class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-title">{{ record.title }}</h5>
+							</div>
+						</div>
+					</a>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}
+
+	

@@ -1,0 +1,17 @@
+@media only screen and (max-width: 550px) {
+  .top-nav-section{
+  	display: none;
+  }
+  .second-section img{
+	margin-bottom: 22px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+	.nav-section .navbar .navbar-brand{
+		margin-right: -45px;
+	}
+  .forth-section{
+    height: auto;
+  }
+}
+    

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block meta %}
+{% for record in seo %}
+{% if record.seo_title %}<title>{{ record.seo_title }}</title>{% endif %}
+{% if record.seo_desc %}<meta name= "description" content="{{ record.seo_desc }}">{% endif %}
+{% if record.sec_keywords %}<meta name= "keywords" content="{{ record.seo_keywords }}">{% endif %}
+{% endfor %}
+{% endblock %}
+{% block content %}
+<section class="blog-sec">
+	<div class="container-fluid">	
+		<!-- <img src="{% static 'images/Blog-Page-Banner-3.jpg'%}"> -->
+		<h3>OUR BLOG</h3>
+	</div>  
+</section>
+<section class=blog-post-sec>
+	<div class="container">
+		<h3>BLOG POSTS</h3>
+		<div class="row">
+			{% for record in blogs %}
+			<div class="col-lg-4 col-md-6 col-sm-6 col-12 mt-2">
+				<a href="/blog/{{ record.slug }}">
+					<div class="card">
+						<img src="{{ record.thumbnail.url }}" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">{{ record.title }}</h5>
+						</div>
+					</div>
+				</a>
+			</div>
+			{% endfor %}
+
+		</div>
+	</div>
+</section>
+{% endblock %}
+
